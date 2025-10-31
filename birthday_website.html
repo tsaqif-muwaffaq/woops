@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #ff69b4;
+            --light-pink: #ffb6d9;
+            --pastel-pink: #ffc4dd;
+            --cream: #fff0f7;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffc4dd 0%, #ffe8f5 50%, #fff0f7 100%);
+            min-height: 100vh;
+        }
+
+        /* ===== PASSWORD PAGE ===== */
+        .password-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .password-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(255, 105, 180, 0.4);
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            animation: slideDown 0.8s ease;
+        }
+
+        .lock-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .password-container h2 {
+            color: var(--primary-pink);
+            margin-bottom: 10px;
+            font-size: 32px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .password-container p {
+            color: #ff8dc7;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 18px;
+            border: 3px solid var(--pastel-pink);
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+            transform: scale(1.02);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
+        }
+
+        .error-message {
+            color: var(--primary-pink);
+            margin-top: 15px;
+            font-size: 15px;
+            display: none;
+            animation: shake 0.5s;
+            font-weight: 500;
+        }
+
+        /* ===== MAIN PAGE ===== */
+        .main-page {
+            display: none;
+            opacity: 0;
+        }
+
+        .main-page.active {
+            display: block;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 90%;
+        }
+
+        .tab-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+        }
+
+        /* Section Container */
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px 120px;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.8s;
+        }
+
+        /* ===== SECTION 1: BIRTHDAY GREETING ===== */
+        .birthday-section {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(32px, 8vw, 64px);
+            color: var(--primary-pink);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .subtitle {
+            font-size: clamp(16px, 4vw, 22px);
+            color: #ff8dc7;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .birthday-cake {
+            font-size: 120px;
+            animation: bounce 2s infinite;
+            margin: 30px 0;
+        }
+
+        /* Container untuk tombol surprise */
+        .surprise-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .surprise-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
+        }
+
+        /* ===== SECTION 2: PHOTO GALLERY ===== */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(28px, 6vw, 48px);
+            color: var(--primary-pink);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .photo-item {
+            position: relative;
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            background: linear-gradient(135deg, #ffc4dd, #ffe8f5);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+
+        /* ===== SECTION 3: LOVE LETTERS ===== */
+        .letters-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .letter-card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.8s;
+        }
+
+        .letter-card::before {
+            content: '💌';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.1;
+        }
+
+        .letter-card h3 {
+            color: var(--primary-pink);
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .letter-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* ===== SECTION 4: REASONS I LOVE YOU ===== */
+        .reasons-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            transition: all 0.3s;
+            animation: fadeIn 0.8s;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4);
+        }
+
+        .reason-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .reason-card h4 {
+            color: var(--primary-pink);
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .reason-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* ===== SECTION 5: COUNTDOWN & WISHES ===== */
+        .countdown-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .countdown-box {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            margin: 40px 0;
+        }
+
+        .countdown-title {
+            color: var(--primary-pink);
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .time-unit {
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            min-width: 100px;
+        }
+
+        .time-number {
+            font-size: 48px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .wishes-container {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+            margin-top: 40px;
+        }
+
+        .wish-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffe8f5, #fff0f7);
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        .wish-item h4 {
+            color: var(--primary-pink);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .wish-item p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ===== SECTION 6: MUSIC PLAYER ===== */
+        .music-section {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .music-player {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+        }
+
+        .vinyl-disc {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+        }
+
+        .vinyl-disc::before {
+            content: '🎵';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+        }
+
+        .vinyl-disc.spinning {
+            animation: spin 3s linear infinite;
+        }
+
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .song-info {
+            margin-top: 30px;
+            color: #555;
+        }
+
+        .song-title {
+            font-size: 24px;
+            color: var(--primary-pink);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SECTION 7: QUIZ GAME ===== */
+        .quiz-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-box {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .quiz-question {
+            color: var(--primary-pink);
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quiz-option {
+            padding: 18px 25px;
+            background: linear-gradient(135deg, #ffe8f5, #fff0f7);
+            border: 3px solid transparent;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--light-pink);
+            transform: translateX(10px);
+        }
+
+        .quiz-option.correct {
+            background: linear-gradient(135deg, #90EE90, #98FB98);
+            border-color: #32CD32;
+        }
+
+        .quiz-option.wrong {
+            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+            border-color: #FF69B4;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+
+        .quiz-score {
+            font-size: 72px;
+            margin: 20px 0;
+        }
+
+        /* ===== EFFECTS ===== */
+        .confetti, .heart, .balloon, .star {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .confetti {
+            width: 10px;
+            height: 10px;
+            animation: fall 3s linear infinite;
+        }
+
+        .heart {
+            font-size: 24px;
+            animation: float-heart 4s ease-in infinite;
+        }
+
+        .balloon {
+            font-size: 40px;
+            animation: float-balloon 6s ease-in-out infinite;
+        }
+
+        .star {
+            font-size: 20px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: scaleUp 0.5s;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: var(--primary-pink);
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .modal-text {
+            color: #555;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* --- STYLING FITUR BARU --- */
+        /* Efek Kembang Api */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 1;
+            animation: firework-shot 1.2s ease-out forwards;
+        }
+
+        @keyframes firework-shot {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-200px); opacity: 0; }
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: firework-explode 0.8s ease-out forwards;
+        }
+
+        @keyframes firework-explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Pesan Spesial (Typewriter) */
+        .letter-content {
+            text-align: left;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+            border-left: 3px solid var(--light-pink);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff8dc7);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .continue-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Buka Hadiah */
+        .gift-content {
+            display: none;
+            animation: fadeIn 0.5s 0.5s forwards;
+            opacity: 0;
+        }
+        .gift-box-anim {
+            font-size: 100px;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+        .gift-box-anim.open {
+            animation: openGift 0.5s forwards;
+        }
+        @keyframes openGift {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .reasons-list {
+            text-align: left;
+            margin: 20px 0;
+            max-height: 150px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .reasons-list li {
+            background: #fff0f7;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .secret-link a {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--primary-pink);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float-heart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            50% { opacity: 1; }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(180deg);
+            }
+        }
+
+        @keyframes float-balloon {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-30px) translateX(15px); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* --- STYLING EFEK MELAYANG BARU --- */
+        .floating-item {
+            position: fixed;
+            bottom: -50px; /* Mulai dari bawah layar */
+            pointer-events: none; /* Agar tidak bisa diklik */
+            z-index: 9999;
+            animation: float-up linear forwards;
+        }
+
+        @keyframes float-up {
+            to {
+                transform: translateY(-105vh) rotate(20deg);
+                opacity: 0;
+            }
+        }
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .password-container {
+                padding: 40px 25px;
+            }
+
+            .nav-tabs {
+                /* Mengembalikan ke posisi horizontal di bawah untuk mobile */
+                flex-direction: row; /* Memastikan arahnya horizontal */
+                bottom: 10px; /* Sedikit lebih dekat ke bawah layar */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 95%; /* Sedikit lebih lebar agar pas */
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                padding: 10px; /* Padding lebih kecil agar muat */
+                font-size: 12px;
+            }
+
+            .section {
+                padding: 60px 15px 100px;
+            }
+
+            .letter-card, .quiz-box, .music-player {
+                padding: 30px 20px;
+            }
+
+            .countdown-box {
+                padding: 30px 20px;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 20px;
+            }
+
+            .time-number {
+                font-size: 36px;
+            }
+
+            .modal-content {
+                padding: 40px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: clamp(28px, 9vw, 40px);
+                /* Aturan responsive sebelumnya dihapus agar teks tampil normal */
+            }
+
+            .surprise-buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .surprise-btn {
+                width: 90%;
+                padding: 15px 20px;
+            }
+
+            .tab-btn {
+                font-size: 13px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+    <script>
+        // Fungsi untuk memulai efek (contoh sederhana)
+        function startEffects() {
+            // Fungsi ini bisa diisi dengan efek lain nanti, seperti confetti atau musik.
+            createFloatingEffects(); // Memulai efek hati, balon, dan bunga
+            console.log("Selamat datang!");
+        }
+
+        // --- FUNGSI UNTUK EFEK MELAYANG (HATI, BALON, BUNGA) ---
+        function createFloatingEffects() {
+            const container = document.getElementById('floating-effects-container');
+            // Anda bisa menambah atau mengubah emoji di sini
+            const effects = ['💖', '🎈', '🌸', '💐', '✨','🌹','🦋']; 
+
+            setInterval(() => {
+                const el = document.createElement('div');
+                el.className = 'floating-item';
+                el.textContent = effects[Math.floor(Math.random() * effects.length)];
+                
+                // Atur properti acak untuk setiap elemen
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.fontSize = (20 + Math.random() * 20) + 'px';
+                el.style.animationDuration = (5 + Math.random() * 5) + 's';
+                el.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(el);
+                setTimeout(() => el.remove(), 10000); // Hapus elemen setelah animasi selesai
+            }, 800); // Interval pembuatan elemen baru (ms)
+        }
+
+        // --- FUNGSI UNTUK TOMBOL SURPRISE ---
+
+        function showSurprise(type) {
+            // Sembunyikan semua konten spesifik dulu
+            document.getElementById('modalText').style.display = 'block';
+            document.getElementById('modalText').innerHTML = ''; // Kosongkan innerHTML
+
+            const modal = document.getElementById('surpriseModal');
+            const modalEmoji = document.getElementById('modalEmoji');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalText = document.getElementById('modalText');
+
+            switch (type) {
+                case 'fireworks':
+                    modalEmoji.textContent = '💖';
+                    modalTitle.textContent = 'Langit Pun Ikut Merayakan!';
+                    modalText.textContent = 'Selamat ulang tahun, sayangku ✨ Hari ini langit pun ikut merayakan karena kamu lahir ke dunia 😍🌟';
+                    launchFireworksEffect();
+                    // Optional: play sound
+                    // const audio = new Audio('path/to/your/sound.mp3');
+                    // audio.play();
+                    break;
+                case 'love':
+                    modalEmoji.textContent = '💌';
+                    modalTitle.textContent = 'Pesan Spesial Untukmu';
+                    modalText.style.display = 'none'; // Sembunyikan elemen p default
+
+                    // Tampilkan konten surat
+                    const letterContainer = document.getElementById('letterContainer');
+                    letterContainer.style.display = 'block';
+                    
+                    const fullMessage = `Sayangku 💕\n\nDari sekian banyak orang di dunia, hanya kamu yang bisa membuatku tersenyum setiap hari. Terima kasih sudah hadir dan memberi warna di hidupku. Selamat ulang tahun yaa cintaku… Semoga langkah-langkahmu selalu dipenuhi kebahagiaan dan cinta – terutama cintaku 🫶🏻\n\nAku mau bilang sesuatu lagi... Kamu itu bukan cuma pacar, tapi juga sahabat terbaik. Tempat aku cerita semua hal, dari yang paling penting sampai yang paling nggak penting. Kamu selalu dengerin, selalu kasih semangat. Aku beruntung banget punya kamu.\n\nAku janji bakal terus berusaha jadi yang terbaik buat kamu, nemenin kamu di setiap langkah, dan jadi alasan kamu tersenyum. Sekali lagi, selamat ulang tahun, cintaku. Aku sayang kamu, lebih dari yang bisa diungkapkan kata-kata.`;
+                    
+                    const letterContent = document.getElementById('letterContent');
+                    const continueBtn = document.getElementById('continueBtn');
+                    
+                    letterContent.textContent = ''; // Kosongkan dulu
+                    typewriterEffect(letterContent, fullMessage.substring(0, 200) + '...', () => {
+                        continueBtn.style.display = 'block';
+                    });
+
+                    document.getElementById('continueBtn').onclick = () => {
+                        letterContent.textContent = fullMessage; // Tampilkan semua pesan
+                        continueBtn.style.display = 'none'; // Sembunyikan tombol
+                    };
+
+                    break;
+                case 'gift':
+                    modalEmoji.innerHTML = '<div class="gift-box-anim" id="giftBox">🎁</div>';
+                    modalTitle.textContent = 'Klik Hadiahnya!';
+                    modalText.textContent = 'Ada sesuatu yang spesial di dalamnya...';
+
+                    const giftContent = document.getElementById('giftContent');
+                    giftContent.style.display = 'none'; // Sembunyikan konten hadiah
+
+                    document.getElementById('giftBox').onclick = function() {
+                        this.classList.add('open');
+                        // Optional: play sound
+                        // const audio = new Audio('path/to/open_gift.mp3');
+                        // audio.play();
+                        setTimeout(() => {
+                            modalTitle.textContent = 'Ini Semua Untukmu 💕';
+                            modalText.style.display = 'none';
+                            giftContent.style.display = 'block';
+                            modalEmoji.style.display = 'none'; // Sembunyikan container emoji agar konten naik
+                        }, 500);
+                    };
+                    break;
+            }
+
+            modal.classList.add('active');
+        }
+
+        function typewriterEffect(element, text, callback) {
+            let i = 0;
+            element.textContent = '';
+            const speed = 30; // Kecepatan ketik (ms)
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        function launchFireworksEffect() {
+            const modalContent = document.querySelector('.modal-content');
+            const numFireworks = 15;
+            for (let i = 0; i < numFireworks; i++) {
+                setTimeout(() => createFirework(modalContent), Math.random() * 2000);
+            }
+        }
+
+        function createFirework(container) {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            const rect = container.getBoundingClientRect();
+            const startX = Math.random() * rect.width;
+            const startY = rect.height;
+            firework.style.left = `${startX}px`;
+            firework.style.bottom = `0px`;
+            container.appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+                const numParticles = 30;
+                const endX = startX;
+                const endY = startY - 200; // Ketinggian ledakan
+                for (let i = 0; i < numParticles; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = `${endX}px`;
+                    particle.style.top = `${endY}px`;
+                    particle.style.background = ['#ff9ccf','#ffd166','#ff66b3','#ffb3e6','#fff'][Math.floor(Math.random()*5)];
+                    const angle = Math.random() * 360;
+                    const distance = Math.random() * 80;
+                    particle.style.transform = `rotate(${angle}deg) translateX(${distance}px) scale(0)`;
+                    container.appendChild(particle);
+                    setTimeout(() => particle.remove(), 800);
+                }
+            }, 1200);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('surpriseModal');
+            modal.classList.remove('active');
+        }
+
+        // --- FUNGSI UNTUK NAVIGASI TAB ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- LOGIKA PASSWORD ---
+            const KATA_SANDI_RAHASIA = "sayang123"; // GANTI PASSWORD DI SINI 
+            const passwordInput = document.getElementById('passwordInput');
+            const submitBtn = document.getElementById('submitPasswordBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const passwordPage = document.getElementById('passwordPage');
+            const mainPage = document.getElementById('mainPage');
+
+            const checkPassword = () => {
+                if (passwordInput.value === KATA_SANDI_RAHASIA) {
+                    passwordPage.style.display = 'none';
+                    mainPage.classList.add('active');
+                    startEffects();
+                } else {
+                    errorMessage.style.display = 'block';
+                    setTimeout(() => {
+                        errorMessage.style.display = 'none';
+                    }, 3000);
+                }
+            };
+
+            submitBtn.addEventListener('click', checkPassword);
+            passwordInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+
+            // Sembunyikan konten modal spesifik saat DOM dimuat
+            document.getElementById('letterContainer').style.display = 'none';
+            document.getElementById('giftContent').style.display = 'none';
+            document.getElementById('continueBtn').style.display = 'none';
+
+            // Reset modal saat ditutup
+            document.querySelector('.modal-close').addEventListener('click', resetModal);
+
+            const tabs = document.querySelectorAll('.tab-btn');
+            const sections = document.querySelectorAll('.section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    document.querySelector(tab.dataset.target).classList.add('active');
+                });
+            });
+
+            // --- LOGIKA MUSIK ---
+            const music = document.getElementById('backsoundMusic');            
+            music.volume = 0.5; // Atur volume awal
+
+            // Coba putar musik. Jika gagal, tunggu interaksi pengguna.
+            let promise = music.play();
+            if (promise !== undefined) {
+                promise.catch(error => {
+                    console.log("Autoplay dicegah. Menunggu interaksi pengguna.");
+                    // Tambahkan event listener untuk memulai musik pada klik pertama
+                    document.body.addEventListener('click', () => {
+                        if (music.paused) {
+                            music.play();
+                        }
+                    }, { once: true }); // Opsi 'once' akan menghapus listener setelah dijalankan
+                }).then(() => {
+                    console.log("Musik berhasil diputar otomatis.");
+                });
+            }
+        });
+
+        function resetModal() {
+            document.getElementById('letterContainer').style.display = 'none';
+            document.getElementById('giftContent').style.display = 'none';
+            document.getElementById('continueBtn').style.display = 'none';
+            document.getElementById('modalText').style.display = 'block';
+            document.getElementById('modalEmoji').style.display = 'block'; // Tampilkan kembali container emoji
+            const giftBox = document.getElementById('giftBox');
+            if (giftBox) giftBox.classList.remove('open');
+        }
+
+    </script>
+</head>
+<body>
+    <!-- Password Page -->
+    <!-- Elemen Audio untuk Backsound -->
+    <audio id="backsoundMusic" loop>
+        <source src="music/backsound.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <!-- Kontainer untuk efek melayang -->
+    <div id="floating-effects-container"></div>
+
+    <div class="password-page" id="passwordPage">
+        <div class="password-container">
+            <div class="lock-icon">🔐</div>
+            <h2>Unlock My Heart</h2>
+            <p>Masukkan kata sandi rahasia kita 💕</p>
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="Ketik password..." />
+            </div>
+            <button class="submit-btn" id="submitPasswordBtn">Buka Hadiah 🎁</button>
+            <div class="error-message" id="errorMessage">Oops! Salah sandinya sayang 🐰💔</div>
+        </div>
+    </div>
+
+    <!-- Main Page -->
+    <div class="main-page" id="mainPage">
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-target="#section1">🏠 Beranda</button>
+            <button class="tab-btn" data-target="#section2">📸 Galeri</button>
+            <button class="tab-btn" data-target="#section3">💌 Surat</button>
+            <!-- Tombol Alasan dihapus sesuai permintaan sebelumnya -->
+        </div>
+
+        <!-- Effects Containers -->
+        <div class="confetti"></div>
+        <div class="heart"></div>
+        <div class="balloon"></div>
+        <div class="star"></div>
+
+        <!-- Section 1: Birthday Greeting -->
+        <section class="section active" id="section1">
+            <div class="birthday-section">
+                <h1 class="main-title">💝Happy Birthday My Love💝</h1>
+                <p class="subtitle">
+                    Hari ini adalah hari spesial untuk orang yang paling spesial di hidupku! 
+                    Selamat ulang tahun sayang, semoga semua impianmu tercapai dan kebahagiaanmu 
+                    tak pernah ada habisnya! 🎉✨
+                </p>
+                <div class="birthday-cake">🎂</div>
+                <div class="surprise-buttons-container">
+                    <button class="surprise-btn" onclick="showSurprise('fireworks')">🎆 Pesta Kembang Api</button>
+                    <button class="surprise-btn" onclick="showSurprise('love')">💖 Pesan Spesial</button>
+                    <button class="surprise-btn" onclick="showSurprise('gift')">🎁 Buka Hadiah</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Photo Gallery -->
+        <section class="section" id="section2">
+            <div class="gallery-section">
+                <h2 class="section-title">✨galeri cantik✨</h2>
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="img/foto1.jpg" alt="foto1" class="photo-placeholder">
+                        <div class="photo-caption">foto 1</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto2.jpg" alt="foto2" class="photo-placeholder">
+                        <div class="photo-caption">foto 2</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto3.jpg" alt="foto3" class="photo-placeholder">
+                        <div class="photo-caption">foto 3</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto4.jpg" alt="foto4" class="photo-placeholder">
+                        <div class="photo-caption">foto 4</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto5.jpg" alt="foto5" class="photo-placeholder">
+                        <div class="photo-caption">foto 5</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto6.jpg" alt="foto6" class="photo-placeholder">
+                        <div class="photo-caption">foto 6</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto7.jpg" alt="foto7" class="photo-placeholder">
+                        <div class="photo-caption">foto 7</div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="img/foto8.jpg" alt="foto8" class="photo-placeholder">
+                        <div class="photo-caption">foto 8</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Love Letters -->
+        <section class="section" id="section3">
+            <div class="letters-section">
+                <h2 class="section-title">💌Surat Cinta Untukmu💌</h2>
+                <div class="letter-card">
+                    <h3>Untuk Orang Terspesial</h3>
+                    <p>Sayang, setiap hari bersamamu adalah hadiah terindah dalam hidupku. Kamu membuat duniaku lebih berwarna, lebih indah, dan penuh makna. Terima kasih sudah menjadi bagian terpenting dari hidupku. I love you to the moon and back! 🌙💫</p>
+                </div>
+                <div class="letter-card">
+                    <h3>Tentang Kita</h3>
+                    <p>Dari semua momen yang kita lalui bersama, setiap detiknya adalah kenangan berharga yang akan selalu aku simpan di hati. Tawa kita, tangis kita, semua perjalanan kita bersama adalah cerita cinta yang tak akan pernah aku lupakan. 💕</p>
+                </div>
+                <div class="letter-card">
+                    <h3>Janji Selamanya</h3>
+                    <p>Aku berjanji akan selalu ada di sisimu, dalam suka maupun duka. Akan menjaga, melindungi, dan membahagiakan kamu selalu. Karena kamu adalah alasan aku tersenyum setiap hari. Forever and always, my love! 💖✨</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for Surprises -->
+        <div class="modal" id="surpriseModal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <div id="modalEmoji" class="modal-emoji"></div>
+                <h3 id="modalTitle" class="modal-title"></h3>
+                <p id="modalText" class="modal-text"></p>
+
+                <!-- Konten untuk Pesan Spesial -->
+                <div id="letterContainer" style="display: none;">
+                    <div id="letterContent" class="letter-content"></div>
+                    <button id="continueBtn" class="continue-btn" style="display: none;">Lanjutkan Membaca</button>
+                </div>
+
+                <!-- Konten untuk Buka Hadiah -->
+                <div id="giftContent" style="display: none;">
+                    <h4>📝 10 Alasan Aku Sayang Kamu</h4>
+                    <ul class="reasons-list">
+                        <li>1. Senyummu yang selalu bikin adem.</li>
+                        <li>2. Caramu membuatku tertawa lepas.</li>
+                        <li>3. Kamu selalu sabar menghadapiku.</li>
+                        <li>4. Pelukanmu adalah tempat ternyamanku.</li>
+                        <li>5. Kamu pendengar yang sangat baik.</li>
+                        <li>6. Semangatmu yang tidak pernah padam.</li>
+                        <li>7. Kamu membuatku jadi versi terbaik diriku.</li>
+                        <li>8. Perhatian-perhatian kecilmu yang manis.</li>
+                        <li>9. Caramu memandang dunia dengan positif.</li>
+                        <li>10. Karena kamu adalah kamu, dan itu sempurna.</li>
+                    </ul>
+                    <div class="secret-link">
+                        <a href="https://youtu.be/HEAn4FqXFY4?si=vcLC2-Tz9ve4lBvp" target="_blank">🎁 Klik Untuk Hadiah Rahasia Terakhir! 🎁</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
